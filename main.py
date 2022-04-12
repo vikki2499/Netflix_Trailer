@@ -13,16 +13,18 @@ driver.maximize_window()
 driver.get("https://www.netflix.com/in/title/80057918")
 time.sleep(2)
 
-#Play_Season-6_Trailer
-trailer = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/section[2]/div[2]/ul/li[1]/div/button/span[1]")
-trailer.click()
-
 #Title
 print("Title: ",driver.find_element(by = By.CLASS_NAME, value = "title-title").text)
 #Description
 print("Description: ",driver.find_element(by = By.CLASS_NAME, value = "title-info-synopsis").text)
 #Starring
 print("Starring: ",driver.find_element(by = By.CLASS_NAME, value = "title-data-info-item-list").text)
+
+#Play_Season-6_Trailer
+trailer = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/section[2]/div[2]/ul/li[1]/div/button/span[1]")
+trailer.click()
+
+
 
 time.sleep(140)
 
