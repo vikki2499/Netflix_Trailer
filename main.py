@@ -25,9 +25,34 @@ print("Starring: ",driver.find_element(by = By.CLASS_NAME, value = "title-data-i
 play_trailer = driver.find_element_by_xpath("/html/body/div[1]/div/div[2]/section[2]/div[2]/ul/li[1]/div/button/span[1]")
 play_trailer.click()
 
+driver.implicitly_wait(30)
+
+duration = driver.find_element_by_xpath("/html/body/div[4]/div/div[2]/div/div/div[2]/div[3]/div/div[4]/div/div[1]/div/div[1]/div/div/div[3]")
+
+total_time = int(duration.get_attribute("aria-valuemax"))
 
 
-time.sleep(140)
+#Hover on the video(Play Stream) for the whole time
+count = 0
+flag = False
+while True:
+
+    current_time = int(duration.get_attribute("aria-valuenow"))
+    
+    if current_time == total_time - 1:
+     print("Video was played using Automation")
+     flag = True
+     break
+    time.sleep(1)
+    count += 1
+    if count == total_time*2:
+      break
+
+if not flag:
+  print("Video didn't play")
+
+time.sleep(300)
 
 #Close the browser
 driver.quit()
+
